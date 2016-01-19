@@ -4,7 +4,7 @@ Ball Class
 
 import pygame
 
-class Ball(object):
+class Ball(PhysObj):
 	def __init__(color, vel):
 		self.color = color
 		self.velocity = vel
