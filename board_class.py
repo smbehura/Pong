@@ -22,3 +22,6 @@ class Board(object):
 	def checkForWin():
 		# loops through all the players and checks for win
 		pass
+	
+	def play():
+		# runs through entire game and plays Pong, must include ball starting etc.
