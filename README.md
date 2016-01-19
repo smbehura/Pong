@@ -1,6 +1,7 @@
 # Pong
 4-person pong
 
+"""
 Overview:
 •	up to 4 players
 •	up to 3 balls
@@ -48,6 +49,6 @@ Work Distribution:
 
 Checkpoint/MVP
 By the checkpoint meeting, we hope to have finished the very basics of the game (i.e. interpreting user input, coding the physics of the pong ball, etc). Depending on how far we get, it is also possible for us to have a very basic GUI for us to use in testing the methods necessary to playing the game. The minimum requirements are the user input functionality, a basic GUI, and the physics which is why we have chosen to address these and have them completed by the checkpoint meeting.
-
+"""
 
 
