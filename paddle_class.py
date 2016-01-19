@@ -3,7 +3,7 @@ Paddle Class
 '''
 import pygame
 
-class Paddle(object):
+class Paddle(PhysObj):
 	def __init__(color, location):
 		self.color = color
 		self.location = location #based on orientation
