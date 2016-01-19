@@ -2,7 +2,7 @@
 Ball Class
 '''
 
-from 
+from physical_object import PhysObj
 
 import pygame
 
