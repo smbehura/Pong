@@ -2,6 +2,11 @@
 Player Class
 '''
 
+from ball_class import Ball
+from paddle_class import Paddle
+
+import pygame
+
 class Player(object):
 	def __init__(paddle, orientation):
 		self.paddle = paddle
