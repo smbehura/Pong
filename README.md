@@ -29,7 +29,7 @@
   
     	getState(): returns state of Player
   
-•	Paddle Class: represents each player’s paddle and keeps a record of paddle’s location and color; also contains variable representing   orientation of paddle (top, bottom, right, and left) 
+•	Paddle Class: represents each player’s paddle and keeps a record of paddle’s location and color; also contains variable representing orientation of paddle (top, bottom, right, and left) 
 
     	move(): moves paddle based on user input keys and orientation of paddle
   
@@ -41,7 +41,9 @@
   
     	changeToLoss(player): sets player’s state variable to loss
   
-    	checkForWin(): loops through all players and checks state variable of each player; if all players except one have a state of          loss than the one neutral player’s state is changed to win 
+    	checkForWin(): loops through all players and checks state variable of each player; if all players except one 
+    
+        have a state of loss than the one neutral player’s state is changed to win 
 
 ### User Interface:
 •	Player 1 (right): up/down keys
