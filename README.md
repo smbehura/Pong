@@ -13,35 +13,35 @@
 ### Components:
 •	Ball Class: represents the floating ball and keeps a record of its location and color
 
-  	move(): moves ball in the correct direction
+    	move(): moves ball in the correct direction
   
-  	changeColor(): changes color of ball based on which color paddle hit it last
+    	changeColor(): changes color of ball based on which color paddle hit it last
   
-  	isOffBoard(): checks if ball is on or off the pong board
+    	isOffBoard(): checks if ball is on or off the pong board
   
 •	Player Class: represents player who has a paddle and a win/neutral/loss state
 
-  	loss(): sets state variable to loss
+    	loss(): sets state variable to loss
   
-  	neutral(): sets state variable to neutral
+    	neutral(): sets state variable to neutral
   
-  	win(): sets state variable to win
+    	win(): sets state variable to win
   
-  	getState(): returns state of Player
+    	getState(): returns state of Player
   
 •	Paddle Class: represents each player’s paddle and keeps a record of paddle’s location and color; also contains variable representing   orientation of paddle (top, bottom, right, and left) 
 
-  	move(): moves paddle based on user input keys and orientation of paddle
+    	move(): moves paddle based on user input keys and orientation of paddle
   
-  	isPaddleofPlayer(player): returns True if paddle belongs to player and False if not
+    	isPaddleofPlayer(player): returns True if paddle belongs to player and False if not
   
 •	Pong Board Class: represents full Pong Board containing paddles, ball and state of game and also contains information like how many   players
 
-  	setNumPlay(num): sets number of players in game
+    	setNumPlay(num): sets number of players in game
   
-  	changeToLoss(player): sets player’s state variable to loss
+    	changeToLoss(player): sets player’s state variable to loss
   
-  	checkForWin(): loops through all players and checks state variable of each player; if all players except one have a state of loss     than the one neutral player’s state is changed to win 
+    	checkForWin(): loops through all players and checks state variable of each player; if all players except one have a state of          loss than the one neutral player’s state is changed to win 
 
 ### User Interface:
 •	Player 1 (right): up/down keys
@@ -60,21 +60,21 @@ When the game first starts, a text box will appear where one of the players can 
 ### Work Distribution:
 •	Graphics: Candace Okumko
 
-  o	Classes: Pong Board
+    o	Classes: Pong Board
   
 •	Game Functionality
 
-  o	Ball Movement: Patrick Shin
+    o	Ball Movement: Patrick Shin
   
-    	Classes: Ball
+      	Classes: Ball
     
-  o	User Input: Catherine Yao
+    o	User Input: Catherine Yao
   
-    	Classes: Paddle, Player
+      	Classes: Paddle, Player
     
-  o	Game Rules/Mechanics: Soma Mitra-Behura
+    o	Game Rules/Mechanics: Soma Mitra-Behura
   
-    	Classes: Pong Board, Player
+      	Classes: Pong Board, Player
 
 ### Checkpoint/MVP:
 By the checkpoint meeting, we hope to have finished the very basics of the game (i.e. interpreting user input, coding the physics of the pong ball, etc). Depending on how far we get, it is also possible for us to have a very basic GUI for us to use in testing the methods necessary to playing the game. The minimum requirements are the user input functionality, a basic GUI, and the physics which is why we have chosen to address these and have them completed by the checkpoint meeting.
