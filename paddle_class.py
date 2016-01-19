@@ -1,6 +1,9 @@
 '''
 Paddle Class
 '''
+
+from physical_object import PhysObj
+
 import pygame
 
 class Paddle(PhysObj):
