@@ -12,17 +12,33 @@ window_size = [size_x * WIDTH + 175, size_y * HEIGHT + 20] # width, height
 screen = pygame.display.set_mode(window_size)
 pygame.display.set_caption('Pong')
 
-result = menu(screen)
-if result is None: #start game
-    #determine variables
-    board = Board(num_players, num_balls, ball_speed)
-    clock = pygame.time.Clock()
-    main_loop(screen, board, num_players, num_balls, ball_speed, clock, False, False)
-# if result == 2: #load game
-#     with open("saved_state.txt", "r") as f:
-#         save_state = f.readline()
-#     my_game = Game(screen, save_state)
-#     my_game.play()
+result = 2
+while result == 2:
+    result = menu(screen)
+    if result == 1: #start game
+        num_players = int(raw_input("Number of Players (1 to 4): "))
+        num_balls = int(raw_input("Number of Balls (1 to 3): "))
+        ball_speed = int(raw_input("Ball Speed (1 to 10): "))
+        board = Board(num_players, num_balls, ball_speed)
+        clock = pygame.time.Clock()
+        main_loop(screen, board, num_players, num_balls, ball_speed, clock, False, False)
+    if result == 2: #instructions
+        print "***INSTRUCTIONS***"
+        print 
+        print "USER INPUT"
+        print "•Player 1 (right): up/down keys"
+        print "•Player 2 (bottom): C/V keys"
+        print "•Player 3 (left): Q/A keys"
+        print "•Player 4 (top): </> keys"
+        print 
+        print "HOW TO WIN"
+        print "1-Player Mode:"
+        print "•Try to keep the ball in play for as long as possible in order to beat the previous 1-player score."
+        print "Multipllayer Mode"
+        print "•Try to keep the ball from running of the screen."
+        print "•Each time a player misses the ball, he/she is eliminated from the game and replaced with a bouncing wall."
+        print "•The game keeps running until one player (the winner) is left."
+        
 
 def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pause):
     board.paddles.draw(screen)
