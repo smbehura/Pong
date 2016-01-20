@@ -13,7 +13,7 @@ class Board(object):
 		self.ball = [] # list of balls in game which depends on self.numBalls
 		self.player = [] # list of players in game which depends on self.numPlayers
 		self.paddle = [] #list of paddles in game which depends on self.numPlayers
-		self.wall = [] #list of the positions of the walls that will be used for bouncing
+		self.wall = [] #list of the walls that will be used for bouncing
 		
 		white = (0, 0, 0)
 		red = (255, 0, 0)
@@ -49,6 +49,8 @@ class Board(object):
 			self.paddles.add(obj)
 		for obj in wall:
 			self.walls.add(obj)
+			
+		self.objects = self.ball + self.paddle + self.wall
 	
 	def setNumPlay(self, num):
 		self.numPlayers = num
@@ -67,3 +69,13 @@ class Board(object):
 			if person.state == 1:
 				return true
 		return false
+		
+	def checkCollandDir(self):
+		for obj in self.objects:
+			for obj2 in self.objects:
+				if obj.isCollis(obj2):
+					if type(obj) == Ball:
+						obj.changeDir()
+						
+	def idk(self):
+		pass
