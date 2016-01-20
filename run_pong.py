@@ -71,22 +71,25 @@ def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pa
             ###USER INPUT
             for event in pygame.event.get():
                 if event.type==pygame.KEYDOWN:
-                    if event.key == pygame.K_GREATER:
-                        self.board.paddle[3].move(False)
-                    elif event.key == pygame.K_LESS:
-                        self.board.paddle[3].move(True)
-                    elif event.key == pygame.K_c:
-                        self.board.paddle[1].move(False)
-                    elif event.key == pygame.K_v:
-                        self.board.paddle[1].move(True)
-                    elif event.key == pygame.K_q:
-                        self.board.paddle[2].move(False)
-                    elif event.key == pygame.K_a:
-                        self.board.paddle[2].move(True)
-                    elif event.key == pygame.K_UP:
-                        self.board.paddle[0].move(False)
-                    elif event.key == pygame.K_DOWN:
-                        self.board.paddle[0].move(True)
+                    try:
+                        if event.key == pygame.K_GREATER:
+                            self.board.paddle[3].move(False)
+                        elif event.key == pygame.K_LESS:
+                            self.board.paddle[3].move(True)
+                        elif event.key == pygame.K_c:
+                            self.board.paddle[1].move(False)
+                        elif event.key == pygame.K_v:
+                            self.board.paddle[1].move(True)
+                        elif event.key == pygame.K_q:
+                            self.board.paddle[2].move(False)
+                        elif event.key == pygame.K_a:
+                            self.board.paddle[2].move(True)
+                        elif event.key == pygame.K_UP:
+                            self.board.paddle[0].move(False)
+                        elif event.key == pygame.K_DOWN:
+                            self.board.paddle[0].move(True)
+                    except Exception:
+                        print "Invalid move."
                         
             #move balls
             #check for collision
