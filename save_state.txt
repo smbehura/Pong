@@ -1,1 +1,3 @@
 #document to store scores for 1-player games
+
+#SCORES WOULD GO HERE
