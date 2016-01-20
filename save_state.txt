@@ -1,0 +1,1 @@
+#document to store scores for 1-player games
