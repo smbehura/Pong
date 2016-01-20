@@ -8,7 +8,7 @@ from example_menu import main as menu
 from board_class import Board
 
 pygame.init()
-window_size = [size_x * WIDTH + 175, size_y * HEIGHT + 20] # width, height
+window_size = [500, 500] # width, height
 screen = pygame.display.set_mode(window_size)
 pygame.display.set_caption('Pong')
 
@@ -16,6 +16,7 @@ result = 2
 while result == 2:
     result = menu(screen)
     if result == 1: #start game
+        print "***START GAME***"
         num_players = int(raw_input("Number of Players (1 to 4): "))
         num_balls = int(raw_input("Number of Balls (1 to 3): "))
         ball_speed = int(raw_input("Ball Speed (1 to 10): "))
@@ -38,6 +39,8 @@ while result == 2:
         print "•Try to keep the ball from running of the screen."
         print "•Each time a player misses the ball, he/she is eliminated from the game and replaced with a bouncing wall."
         print "•The game keeps running until one player (the winner) is left."
+        print 
+        print "Press P at anytime to pause the game."
         
 
 def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pause):
@@ -59,15 +62,17 @@ def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pa
                 if event.key==pygame.K_p:
                     if pause:
                         pause = False
+                        print "GAME RESUMED"
                     else:
                         pause = True
+                        print "GAME PAUSED"
 
-        if stop == False and pause == False:
+        if stop == False and pause == False and not self.board.checkForWin():
             ###USER INPUT
             ###UPDATE VALUES FOR MOVABLE OBJECTS
-            board.paddles.draw(screen)
-            board.balls.draw(screen)
-            board.walls.draw(screen)
+            self.board.paddles.draw(screen)
+            self.board.balls.draw(screen)
+            self.board.walls.draw(screen)
 
             #text
             #change the color of the ball
