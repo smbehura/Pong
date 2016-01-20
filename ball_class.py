@@ -38,3 +38,4 @@ class Ball(PhysObj):
 
 	def move(self, velocity, angle):
 		#moves ball at given velocity and angle
+		#returns new position of ball?
