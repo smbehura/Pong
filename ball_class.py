@@ -31,11 +31,11 @@ class Ball(PhysObj):
 
 	def is_collided(self):
 		#should return if it collides with a paddle, wall, or ball
-		#returns new ball angle
+		#if position of ball is equal to pos range of paddles then return true
+		#loop through each paddle 
 
 	def changeColor(self):
 		#changes color based on paddle hit
 
 	def move(self, velocity, angle):
 		#moves ball at given velocity and angle
-		#returns new position of ball?
