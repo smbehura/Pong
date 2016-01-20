@@ -7,7 +7,7 @@ from physical_object import PhysObj
 import pygame
 
 class Paddle(PhysObj):
-	def __init__(self, color, location, x, y):
+	def __init__(self, color, x, y):
 		self.image = pygame.image.load("blank.png").convert_alpha()
   		self.rect = self.image.get_rect()
 		self.color = color
@@ -19,9 +19,6 @@ class Paddle(PhysObj):
 
 	def get_color(self):
 		return self.color
-
-	def get_loc(self):
-		return self.location
 
 	def move(self):
 		self.update_rect()
