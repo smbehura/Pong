@@ -36,7 +36,8 @@ while result == 2:
         print "1-Player Mode:"
         print "•Try to keep the ball in play for as long as possible in order to beat the previous 1-player score."
         print "Multipllayer Mode"
-        print "•Try to keep the ball from running of the screen."
+        print "•Take note of the amount of players and which keys should be used."
+        print "•Try to keep the ball from running of the screen by using your paddle."
         print "•Each time a player misses the ball, he/she is eliminated from the game and replaced with a bouncing wall."
         print "•The game keeps running until one player (the winner) is left."
         print 
@@ -49,10 +50,10 @@ def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pa
     board.walls.draw(screen)
     pygame.display.flip() 
 
-    if stop == True:
-        again = raw_input("Would you like to run the simulation again? If yes, type 'yes'\n")
-        if again == 'yes':
-            new_game()
+    # if stop == True:
+    #     again = raw_input("Would you like to run the simulation again? If yes, type 'yes'\n")
+    #     if again == 'yes':
+    #         new_game()
     while stop == False:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: #user clicks close
