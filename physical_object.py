@@ -32,3 +32,9 @@ class PhysObj(object):
         self.rect.x = pos_x
         self.rect.y = pos_y
         
+  def move():
+  	pass
+  
+  def changeDir():
+  	pass
+        
