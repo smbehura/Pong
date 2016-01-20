@@ -29,8 +29,9 @@ class Ball(PhysObj):
 	def get_velocity(self):
 		return self.velocity
 
-	def is_collided(sel):
+	def is_collided(self):
 		#should return if it collides with a paddle, wall, or ball
+		#returns new ball angle
 
 	def changeColor(self):
 		#changes color based on paddle hit
