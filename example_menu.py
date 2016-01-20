@@ -55,10 +55,9 @@ def main(screen):
    # images, and a third is -gasp- a mix of images and text buttons!  To
    # understand the input factors, see the menu file
    menu = cMenu(50, 50, 20, 5, 'vertical', 100, screen,
-               [('Start Game', 1, None),
-                ('Load Game',  2, None),
-                ('Options',    3, None),
-                ('Exit',       4, None)])
+               [('Start Game',    1, None),
+                ('Instructions',  2, None),
+                ('Quit',          3, None)])
 
    # Center the menu on the draw_surface (the entire screen here)
    menu.set_center(True, True)
@@ -100,16 +99,13 @@ def main(screen):
          elif state == 1:
             print 'Start Game!'
             state = 0
-            return
+            return 1
          elif state == 2:
-            print 'Load Game!'
+            print 'Instructions!'
             state = 0
             return 2
-         elif state == 3:
-            print 'Options!'
-            state = 0
          else:
-            print 'Exit!'
+            print 'Quit!'
             pygame.quit()
             sys.exit()
 
