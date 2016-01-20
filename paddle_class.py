@@ -8,15 +8,24 @@ import pygame
 
 class Paddle(PhysObj):
 	def __init__(self, color, x, y, orientation):
-		self.image = pygame.image.load("blank.png").convert_alpha()
+		determine_image(orientation)
   		self.rect = self.image.get_rect()
 		self.color = color
 		self.pos_x = x
 		self.pos_y = y
-		self.location = location #based on orientation
 		self.orientation = orientation
 		self.update_rect()
 		#need funciton in player class to turn player orientation into paddle location
+
+	def determine_image(self, num):
+		if num == 1:
+			self.image = pygame.image.load("paddle_R.png").convert_alpha()
+		elif num == 2: 
+			self.image = pygame.image.load("paddle_B.png").convert_alpha()
+		elif num == 3: 
+			self.image = pygame.image.load("paddle_L.png").convert_alpha()
+		elif num == 4: 
+			self.image = pygame.image.load("paddle_T.png").convert_alpha()
 
 	def get_color(self):
 		return self.color
