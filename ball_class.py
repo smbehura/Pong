@@ -19,7 +19,7 @@ class Ball(PhysObj):
 
 	def set_vel(self, velocity):
 		self.velocity = velocity
-		
+
 	def set_color(self, color):
 		self.color = color
 
@@ -28,4 +28,12 @@ class Ball(PhysObj):
 
 	def get_velocity(self):
 		return self.velocity
-	
+
+	def is_collided(sel):
+		#should return if it collides with a paddle, wall, or ball
+
+	def changeColor(self):
+		#changes color based on paddle hit
+
+	def move(self, velocity, angle):
+		#moves ball at given velocity and angle
