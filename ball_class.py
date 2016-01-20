@@ -4,16 +4,17 @@ Ball Class
 
 from physical_object import PhysObj
 
-import pygame
+import pygame, random, math
 
 class Ball(PhysObj):
-	def __init__(self, color, vel, x, y, angle):
+	def __init__(self, color, vel, x, y):
 		self.image = pygame.image.load("blank.png").convert_alpha()
   		self.rect = self.image.get_rect()
 		self.color = color
 		self.velocity = vel
 		self.pos_x = x
 		self.pos_y = y
+		angle = random.random() * 2 * math.pi
 		self.angle = angle
 		self.update_rect()
 		pass
@@ -40,9 +41,15 @@ class Ball(PhysObj):
 		#should return if it collides with a paddle, wall, or ball
 		#if position of ball is equal to pos range of paddles then return true
 		#loop through each paddle and add/subtract length of paddle
+		pass
 
 	def changeColor(self):
 		#changes color based on paddle hit
+		pass
 
-	def move(self, velocity, angle):
-		#moves ball at given velocity and angle
+	def move(self, velocity):
+		self.pos_x += (0.5 * velocity * math.cos(self.angle))
+		self.pos_y += (0.5 * velocity * math.sin(self.angle))
+		
+	def changeDir(self, obj):
+		pass
