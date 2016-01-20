@@ -50,9 +50,9 @@
 
 •	Player 2 (bottom): C/V keys
 
-•	Player 3 (top): </> keys
+•	Player 3 (left): Q/A keys
 
-•	Player 4 (left): Q/A keys
+•	Player 4 (top): </> keys
 
 Once a player misses the ball, the player’s paddle will disappear and the game will turn into a 3 player game. The side that the paddle disappears from will just end up being a wall that the ball will bounce off of. 
 
