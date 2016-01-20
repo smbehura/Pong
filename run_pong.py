@@ -67,12 +67,12 @@ def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pa
                         pause = True
                         print "GAME PAUSED"
 
-        if stop == False and pause == False:
+        if stop == False and pause == False and not self.board.checkForWin():
             ###USER INPUT
             ###UPDATE VALUES FOR MOVABLE OBJECTS
-            board.paddles.draw(screen)
-            board.balls.draw(screen)
-            board.walls.draw(screen)
+            self.board.paddles.draw(screen)
+            self.board.balls.draw(screen)
+            self.board.walls.draw(screen)
 
             #text
             #change the color of the ball
