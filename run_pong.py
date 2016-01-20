@@ -15,6 +15,7 @@ pygame.display.set_caption('Pong')
 result = menu(screen)
 if result is None: #start game
     #determine variables
+    board = Board(num_players, num_balls, ball_speed)
     clock = pygame.time.Clock()
     main_loop(screen, board, num_players, num_balls, ball_speed, clock, False, False)
 # if result == 2: #load game
@@ -46,6 +47,8 @@ def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pa
                         pause = True
 
         if stop == False and pause == False:
+            ###USER INPUT
+            ###UPDATE VALUES FOR MOVABLE OBJECTS
             board.paddles.draw(screen)
             board.balls.draw(screen)
             board.walls.draw(screen)
