@@ -5,14 +5,23 @@ Board Class
 import pygame
 
 class Board(object):
-	def __init__(self, numPlayers, numBalls):
-		self.numPlayers = numPlayers
-		self.state = 0
-		self.numBalls = numBalls
-		self.balls = [] # list of balls in game which depends on self.numBalls
-		self.players = [] # list of players in game which depends on self.numPlayers
-		self.paddles = [] #list of paddles in game which depends on self.numPlayers
-		self.walls = [] #list of the positions of the walls that will be used for bouncing
+	def __init__(self, num_players, num_balls, ball_speed):
+		self.num_players = num_players
+		self.num_balls = num_balls
+		self.ball_speed = ball_speed
+		
+		self.ball = [] # list of balls in game which depends on self.numBalls
+		self.player = [] # list of players in game which depends on self.numPlayers
+		self.paddle = [] #list of paddles in game which depends on self.numPlayers
+		self.wall = [] #list of the positions of the walls that will be used for bouncing
+		
+	        self.balls = pygame.sprite.RenderPlain()
+	        self.paddles = pygame.sprite.RenderPlain()
+	        self.walls = pygame.sprite.RenderPlain()
+	
+	        self.wall.append(<blank>) #add wall to list
+	        self.walls.add(<blank>) #add wall to sprite list
+	        ### do for all lists
 
 	def setNumPlay(self, num):
 		self.numPlayers = num
@@ -24,6 +33,3 @@ class Board(object):
 	def checkForWin(self):
 		# loops through all the players and checks for win
 		pass
-	
-	def play(self):
-		# runs through entire game and plays Pong, must include ball starting etc.
