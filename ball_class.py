@@ -48,7 +48,7 @@ class Ball(PhysObj):
 
     def changeDir(self, obj):
         if self.isCollis(obj):
-        	if type(obj) is Paddle:
+        	if type(obj) is Paddle or type(obj) is Wall:
         		if obj.orientation % 2 == 0: # even number: top or bottom
         			# bottom: 5*pi/4 --> 3*pi/4; 7*pi/4 --> pi/4
         			# top: 3*pi/4 --> 5*pi/4; pi/4 --> 7*pi/4
@@ -72,13 +72,13 @@ class Ball(PhysObj):
         #loop through each paddle and add/subtract length of paddle
         
         # checks if ball is off screen (used later in function below)
-        def isOffScreen():
+        def isOffScreen(self):
         	if 0 < self.pos_x and self.pos_x > 500 and 0 < self.pos_y and self.pos_y > 500:
         		return False
         	return True
         
         # returns orientation of player who lost ball and 0 if ball is still on board
-        def offScreenOrientation():
+        def offScreenOrientation(self):
         	if isOffScreen():
         		if self.pos_x > 500 and self.pos_y < 500:
         			return 1
