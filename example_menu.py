@@ -134,7 +134,7 @@ def alt_main(screen):
    # images, and a third is -gasp- a mix of images and text buttons!  To
    # understand the input factors, see the menu file
    menu = cMenu(0, 0, 0, 0, 'vertical', 100, screen,
-               [("Back to Menu", 1, pygame.image.load('menu_button.png').convert_alpha())])
+               [("Back to Menu", 1, pygame.image.load('back.png').convert_alpha())])
 
    myfont = pygame.font.SysFont("monospace", 40)
    inst = myfont.render("INSTRUCTIONS", 1, (255,255,255))
