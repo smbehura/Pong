@@ -79,7 +79,7 @@ class Ball(PhysObj):
         
         # returns orientation of player who lost ball and 0 if ball is still on board
         def offScreenOrientation(self):
-        	if isOffScreen():
+        	if self.isOffScreen():
         		if self.pos_x > 500 and self.pos_y < 500:
         			return 1
         		elif self.pos_x > 0 and self.pos_y > 500:
