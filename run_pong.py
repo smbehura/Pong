@@ -57,7 +57,10 @@ class Game(object):
                 ball.move()
             # look through all objects and check for collisions
             # collision checking includes changeDir() from Ball Class
-            # must write function checking for ball off screen and shit like that, working on it
+            # check if ball is off screen and return orientation if ball is off screen with ball.offScreenOrientation()
+            #       offScreenOrientation() returns 0 if ball is still on screen so check for that to check for and set losers
+            # depending on whether there's a loser or not, change numplayers of game and start the new game immediately
+            
             self.screen.fill((0, 0, 0))
             self.board.paddles.draw(screen)
             self.board.balls.draw(screen)
