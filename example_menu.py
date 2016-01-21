@@ -55,7 +55,7 @@ def main(screen):
    # images, and a third is -gasp- a mix of images and text buttons!  To
    # understand the input factors, see the menu file
    menu = cMenu(50, 50, 20, 5, 'vertical', 100, screen,
-               [("Title",         0, pygame.image.load('pong.png').convert_alpha()
+               [("Title",         0, pygame.image.load('pong.png').convert_alpha()),
                 ('Start Game',    1, pygame.image.load('start.png').convert_alpha()),
                 ('Instructions',  2, pygame.image.load('instructions.png').convert_alpha()),
                 ('Quit',          3, pygame.image.load('quit.png').convert_alpha())])
