@@ -54,7 +54,7 @@ def main(screen):
    # Create 3 diffrent menus.  One of them is only text, another one is only
    # images, and a third is -gasp- a mix of images and text buttons!  To
    # understand the input factors, see the menu file
-   menu = cMenu(50, 50, 20, 5, 'vertical', 100, screen,
+   menu = cMenu(0, 0, 0, 0, 'vertical', 100, screen,
                [("Title",         0, pygame.image.load('pong.png').convert_alpha()),
                 ('Start Game',    1, pygame.image.load('start.png').convert_alpha()),
                 ('Instructions',  2, pygame.image.load('instructions.png').convert_alpha()),
@@ -94,7 +94,17 @@ def main(screen):
       # Update the menu, based on which "state" we are in - When using the menu
       # in a more complex program, definitely make the states global variables
       # so that you can refer to them by a name
-      if e.type == pygame.KEYDOWN or e.type == EVENT_CHANGE_STATE:
+      if e.type == pygame.MOUSEBUTTONDOWN or e.type == EVENT_CHANGE_STATE:
+         if e.type == pygame.MOUSEBUTTONDOWN:
+            x,y = tuple(e.pos)
+            if x >= 130 and x <= 305 and y >= 180 and y <= 220:
+               state = 1
+            elif x >= 120 and x <= 320 and y >= 260 and y <= 300:
+               state = 2
+            elif x >= 170 and x <= 260 and y >= 340 and y <= 380:
+               state = 3
+            else:
+               state = 0
          if state == 0:
             rect_list, state = menu.update(e, state)
          elif state == 1:
