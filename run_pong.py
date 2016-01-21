@@ -55,7 +55,9 @@ class Game(object):
 
             for ball in self.board.ball:
                 ball.move()
-            #check for collision
+            # look through all objects and check for collisions
+            # collision checking includes changeDir() from Ball Class
+            # must write function checking for ball off screen and shit like that, working on it
             self.screen.fill((0, 0, 0))
             self.board.paddles.draw(screen)
             self.board.balls.draw(screen)
