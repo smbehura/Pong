@@ -10,6 +10,12 @@ from wall_class import Wall
 import random
 
 class Board(object):
+    white = (0, 0, 0)
+    red = (255, 0, 0)
+    yellow = (255, 255, 0)
+    green = (0, 255, 0)
+    blue = (0, 0, 255)
+
     def __init__(self, num_players, num_balls, ball_speed):
         self.num_players = num_players
         self.num_balls = num_balls
@@ -20,27 +26,21 @@ class Board(object):
         self.paddle = [] #list of paddles in game which depends on self.numPlayers
         self.wall = [] #list of the walls that will be used for bouncing
 
-        white = (0, 0, 0)
-        red = (255, 0, 0)
-        yellow = (255, 255, 0)
-        green = (0, 255, 0)
-        blue = (0, 0, 255)
-
         for num in range(num_balls):
-            self.ball.append(Ball(white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
+            self.ball.append(Ball(self.white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
 
         for num in range(num_players):
             if num == 0:
-                new_paddle = Paddle(red, 480, 200, num + 1)
+                new_paddle = Paddle(self.red, 480, 200, num + 1)
                 self.paddle.append(new_paddle)
             elif num == 1:
-                new_paddle = Paddle(blue, 200, 480, num + 1)
+                new_paddle = Paddle(self.blue, 200, 480, num + 1)
                 self.paddle.append(new_paddle)
             elif num == 2:
-                new_paddle = Paddle(yellow, 5, 200, num + 1)
+                new_paddle = Paddle(self.yellow, 5, 200, num + 1)
                 self.paddle.append(new_paddle)
             elif num == 3:
-                new_paddle = Paddle(green, 200, 5, num + 1)
+                new_paddle = Paddle(self.green, 200, 5, num + 1)
                 self.paddle.append(new_paddle)
             new_player = Player(new_paddle, num + 1)
             self.player.append(new_player)
@@ -79,23 +79,32 @@ class Board(object):
             if player_num == person.orient:
                 player = person
                 break;
-                
+
         if player is not None:
             player.lose()
             self.paddle.remove(player.paddle)
             self.paddles.remove(player.paddle)
-    
-            new_wall = Wall(player.orient)
+
+            num = player.orient
+            if num == 1:
+                new_wall = Wall(num, 480, 0)
+            elif num == 2:
+                new_wall = Wall(num, 0, 480)
+            elif num == 3:
+                new_wall = Wall(num, 0, 0)
+            elif num == 4:
+                new_wall = Wall(num, 0, 0)
             self.wall.append(new_wall)
             self.walls.add(new_wall)
-            
+
             self.ball = []
             for num in range(self.num_balls):
-                self.ball.append(Ball(white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
+                self.ball.append(Ball(self.white, self.ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
             self.balls = pygame.sprite.RenderPlain()
             for obj in self.ball:
                 self.balls.add(obj)
             self.objects = self.ball + self.paddle + self.wall
+        
 
     def checkForWin(self):
         for person in self.player:
