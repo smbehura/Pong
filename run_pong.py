@@ -4,6 +4,7 @@ Used to run and test Pong
 
 import pygame
 from example_menu import main as menu
+from example_menu import alt_main as instructions
 
 from board_class import Board
 
@@ -64,8 +65,10 @@ class Game(object):
             clock.tick(1)
         pygame.quit()
 
-result = 2
-while result == 2:
+result = -1
+while result == -1:
+    screen.fill((0, 0, 0))
+    pygame.display.flip()
     result = menu(screen)
     if result == 1: #start game
         print "***START GAME***"
@@ -77,24 +80,9 @@ while result == 2:
         game = Game(screen, board)
         game.main_loop(num_players, num_balls, ball_speed, clock)
     if result == 2: #instructions
-        print "***INSTRUCTIONS***"
-        print 
-        print "USER INPUT"
-        print "Player 1 (right): up/down keys"
-        print "Player 2 (bottom): C/V keys"
-        print "Player 3 (left): Q/A keys"
-        print "Player 4 (top): </> keys"
-        print 
-        print "HOW TO WIN"
-        print "1-Player Mode:"
-        print "Try to keep the ball in play for as long as possible in order to beat the previous 1-player score."
-        print "Multiplayer Mode"
-        print "Take note of the amount of players and which keys should be used."
-        print "Try to keep the ball from running of the screen by using your paddle."
-        print "Each time a player misses the ball, he/she is eliminated from the game and replaced with a bouncing wall."
-        print "The game keeps running until one player (the winner) is left."
-        print 
-        print "Press 'P' at anytime to pause the game."
+        screen.fill((0, 0, 0))
+        pygame.display.flip()
+        result = instructions(screen)
         
 
 # parsed = False
