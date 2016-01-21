@@ -152,7 +152,7 @@ class cMenu:
       self.selection = 0                        # The currently selected button
       self.u_color = WHITE                      # Color for unselected text
       self.s_color = RED                        # Color for selected text
-      self.image_highlight_color = BLUE         # Color for the image highlights
+      self.image_highlight_color = BLACK         # Color for the image highlights
       self.image_highlight_offset = 2           # Addition padding around image
                                                 # buttons only for the highlight
 
@@ -599,7 +599,8 @@ class cMenu:
       o = self.orientation
       s = self.selection
       n = self.change_number
-
+   
+      '''
       if e.key == pygame.K_DOWN:
          if (o == 'vertical') and ((s + 1) % n != 0):
             self.selection += 1
@@ -628,6 +629,7 @@ class cMenu:
          redraw_full_menu = True
       elif e.key == pygame.K_RETURN:
          return [None], self.menu_items[s]['state']
+      '''
 
       if self.selection >= len(self.menu_items) or self.selection < 0:
          self.selection = self.selection_prev
