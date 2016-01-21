@@ -70,3 +70,23 @@ class Ball(PhysObj):
         #returns new angle of ball
         #if position of ball is equal to pos range of paddles then return true
         #loop through each paddle and add/subtract length of paddle
+        
+        # checks if ball is off screen (used later in function below)
+        def isOffScreen():
+        	if 0 < self.pos_x and self.pos_x > 500 and 0 < self.pos_y and self.pos_y > 500:
+        		return False
+        	return True
+        
+        # returns orientation of player who lost ball and 0 if ball is still on board
+        def offScreenOrientation():
+        	if isOffScreen():
+        		if self.pos_x > 500 and self.pos_y < 500:
+        			return 1
+        		elif self.pos_x > 0 and self.pos_y > 500:
+        			return 2
+        		elif self.pos_x < 0 and self.pos_y > 0:
+        			return 3
+        		elif self.pos_x < 500 and self.pos_y < 0:
+        			return 4
+        	else:
+        		return 0
