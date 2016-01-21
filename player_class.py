@@ -8,25 +8,25 @@ from paddle_class import Paddle
 import pygame
 
 class Player(object):
-	def __init__(paddle, orientation):
+	def __init__(self, paddle, orientation):
 		self.paddle = paddle
 		self.orient = orientation #orientation means top, bottom, left, or right of window
 		self.state = 0
 
-	def get_paddle():
+	def get_paddle(self):
 		return self.paddle
 
-	def get_orient():
+	def get_orient(self):
 		return self.orient
 
-	def get_state():
+	def get_state(self):
 		return self.state
 
-	def neutral():
+	def neutral(self):
 		self.state = 0
 
-	def win():
+	def win(self):
 		self.state = 1
 
-	def lose():
+	def lose(self):
 		self.state = -1

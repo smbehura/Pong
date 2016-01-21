@@ -4,14 +4,14 @@ Physical Object class specifically to handle collisions and such things
 
 import pygame
 
-class PhysObj(object):
-  def __init__(location, x, y):
-  	self.image = pygame.image.load("blank.png").convert_alpha()
-  	self.rect = self.image.get_rect()
-	self.location = location
-	self.pos_x = x
-	self.pos_y = y
-	self.update_rect()
+class PhysObj(pygame.sprite.Sprite):
+  def __init__(self, x, y):
+    super(PhysObj, self).__init__()
+    self.image = pygame.Surface([15, 15])
+    self.rect = self.image.get_rect()
+    self.pos_x = x
+    self.pos_y = y
+    self.update_rect()
     
   def isCollis(self, obj):
     x = obj.get_x
@@ -20,15 +20,21 @@ class PhysObj(object):
     return self.rect.pygame.Rect.colliderect(rect)
   
   def get_x(self):
-  	return self.pos_x
+    return self.pos_x
 
   def get_y(self):
-	return self.pos_y
-	
+    return self.pos_y
+
   def get_rect(self):
-  	return self.rect
-	
+    return self.rect
+
   def update_rect(self):
-        self.rect.x = pos_x
-        self.rect.y = pos_y
+        self.rect.x = self.pos_x
+        self.rect.y = self.pos_y
+        
+  def move(self):
+    pass
+  
+  def changeDir(self):
+    pass
         
