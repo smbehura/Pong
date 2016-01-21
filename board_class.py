@@ -76,26 +76,26 @@ class Board(object):
     def changeToLoss(self, player_num):
         player = None
         for person in self.player:
-            if player_num == person.orientation:
+            if player_num == person.orient:
                 player = person
                 break;
                 
-        player.lose()
-        self.paddle.remove(player.paddle)
-        self.paddles.remove(player.paddle)
-
-        new_wall = Wall(player.orientation)
-        self.wall.append(new_wall)
-        self.walls.add(new_wall)
-        
-        self.ball = []
-        for num in range(self.num_balls):
-            self.ball.append(Ball(white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
-        self.balls = pygame.sprite.RenderPlain()
-        for obj in self.ball:
-            self.balls.add(obj)
-        self.objects = self.ball + self.paddle + self.wall
-        
+        if player is not None:
+            player.lose()
+            self.paddle.remove(player.paddle)
+            self.paddles.remove(player.paddle)
+    
+            new_wall = Wall(player.orient)
+            self.wall.append(new_wall)
+            self.walls.add(new_wall)
+            
+            self.ball = []
+            for num in range(self.num_balls):
+                self.ball.append(Ball(white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
+            self.balls = pygame.sprite.RenderPlain()
+            for obj in self.ball:
+                self.balls.add(obj)
+            self.objects = self.ball + self.paddle + self.wall
 
     def checkForWin(self):
         for person in self.player:
