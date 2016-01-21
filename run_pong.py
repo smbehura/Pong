@@ -66,6 +66,7 @@ class Game(object):
 
 result = 2
 while result == 2:
+    self.screen.fill((255, 255, 255))
     result = menu(screen)
     if result == 1: #start game
         print "***START GAME***"
@@ -87,7 +88,6 @@ while result == 2:
         print 
         print "HOW TO WIN"
         print "1-Player Mode:"
-<<<<<<< HEAD
         print "Try to keep the ball in play for as long as possible in order to beat the previous 1-player score."
         print "Multiplayer Mode"
         print "Take note of the amount of players and which keys should be used."
@@ -96,76 +96,7 @@ while result == 2:
         print "The game keeps running until one player (the winner) is left."
         print 
         print "Press 'P' at anytime to pause the game."
-=======
-        print "•Try to keep the ball in play for as long as possible in order to beat the previous 1-player score."
-        print "Multipllayer Mode"
-        print "•Take note of the amount of players and which keys should be used."
-        print "•Try to keep the ball from running of the screen by using your paddle."
-        print "•Each time a player misses the ball, he/she is eliminated from the game and replaced with a bouncing wall."
-        print "•The game keeps running until one player (the winner) is left."
-        print 
-        print "Press P at anytime to pause the game."
         
-
-def main_loop(screen, board, num_players, num_balls, ball_speed, clock, stop, pause):
-    board.paddles.draw(screen)
-    board.balls.draw(screen)
-    board.walls.draw(screen)
-    pygame.display.flip() 
-
-    # if stop == True:
-    #     again = raw_input("Would you like to run the simulation again? If yes, type 'yes'\n")
-    #     if again == 'yes':
-    #         new_game()
-    while stop == False:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: #user clicks close
-                stop = True
-                pygame.quit()
-            elif event.type==pygame.KEYDOWN:
-                if event.key==pygame.K_p:
-                    if pause:
-                        pause = False
-                        print "GAME RESUMED"
-                    else:
-                        pause = True
-                        print "GAME PAUSED"
-
-        if stop == False and pause == False and not self.board.checkForWin():
-            ###USER INPUT
-            for event in pygame.event.get():
-                if event.type==pygame.KEYDOWN:
-                    try:
-                        if event.key == pygame.K_GREATER:
-                            self.board.paddle[3].move(False)
-                        elif event.key == pygame.K_LESS:
-                            self.board.paddle[3].move(True)
-                        elif event.key == pygame.K_c:
-                            self.board.paddle[1].move(False)
-                        elif event.key == pygame.K_v:
-                            self.board.paddle[1].move(True)
-                        elif event.key == pygame.K_q:
-                            self.board.paddle[2].move(False)
-                        elif event.key == pygame.K_a:
-                            self.board.paddle[2].move(True)
-                        elif event.key == pygame.K_UP:
-                            self.board.paddle[0].move(False)
-                        elif event.key == pygame.K_DOWN:
-                            self.board.paddle[0].move(True)
-                    except Exception:
-                        print "Invalid move."
-                        
-            #move balls
-            #check for collision
-            self.board.paddles.draw(screen)
-            self.board.balls.draw(screen)
-            self.board.walls.draw(screen)
-
-            pygame.display.flip() # update screen
-            clock.tick(.5)
-    pygame.quit() # closes things, keeps idle from freezing
->>>>>>> origin/master
-
 
 # parsed = False
 #   while not parsed:
