@@ -66,7 +66,6 @@ class Game(object):
 
 result = 2
 while result == 2:
-    self.screen.fill((255, 255, 255))
     result = menu(screen)
     if result == 1: #start game
         print "***START GAME***"
