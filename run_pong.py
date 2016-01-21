@@ -20,7 +20,7 @@ class Game(object):
         self.clock = clock
         self.pause = False
 
-    def pause(self):
+    def pause_game(self):
         if self.pause:
             self.pause = False
         else:
@@ -28,7 +28,7 @@ class Game(object):
         
     def main_loop(self, num_players, num_balls, ball_speed):
         quit = False
-        while not self.board.checkForWin() or not quit:
+        while not self.board.checkForWin() and not quit:
             self.screen.fill((0, 0, 0))
             self.board.paddles.draw(screen)
             self.board.balls.draw(screen)
@@ -84,7 +84,10 @@ class Game(object):
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_p:
-                        self.pause()
+                        self.pause_game()
+                elif event.type == pygame.QUIT:
+                    quit = True
+                    break
         pygame.quit()
 
 result = -1
