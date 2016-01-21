@@ -7,6 +7,7 @@ from paddle_class import Paddle
 from ball_class import Ball
 from player_class import Player
 from wall_class import Wall
+import random
 
 class Board(object):
     def __init__(self, num_players, num_balls, ball_speed):
@@ -26,7 +27,7 @@ class Board(object):
         blue = (0, 0, 255)
 
         for num in range(num_balls):
-            self.ball.append(Ball(white, ball_speed, 250, 250)) #determine x, y
+            self.ball.append(Ball(white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
 
         for num in range(num_players):
             if num == 0:
@@ -70,9 +71,15 @@ class Board(object):
         self.objects = self.ball + self.paddle + self.wall
 
     def setNumPlay(self, num):
-        self.numPlayers = num
+        self.num_players = num
 
-    def changeToLoss(self, player):
+    def changeToLoss(self, player_num):
+        player = None
+        for person in self.player:
+            if player_num == person.orientation:
+                player = person
+                break;
+                
         player.lose()
         self.paddle.remove(player.paddle)
         self.paddles.remove(player.paddle)
@@ -80,6 +87,15 @@ class Board(object):
         new_wall = Wall(player.orientation)
         self.wall.append(new_wall)
         self.walls.add(new_wall)
+        
+        self.ball = []
+        for num in range(self.num_balls):
+            self.ball.append(Ball(white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
+        self.balls = pygame.sprite.RenderPlain()
+        for obj in self.ball:
+            self.balls.add(obj)
+        self.objects = self.ball + self.paddle + self.wall
+        
 
     def checkForWin(self):
         for person in self.player:
