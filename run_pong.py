@@ -20,6 +20,15 @@ class Game(object):
         self.clock = clock
         self.pause = False
 
+    def update_screen(self):
+        self.screen.fill((0, 0, 0))
+        self.board.paddles.draw(screen)
+        self.board.balls.draw(screen)
+        self.board.walls.draw(screen)
+
+        pygame.display.flip() # update screen
+        self.clock.tick(50)
+
     def pause_game(self):
         if self.pause:
             self.pause = False
@@ -29,41 +38,41 @@ class Game(object):
     def main_loop(self, num_players, num_balls, ball_speed):
         quit = False
         while not self.board.checkForWin() and not quit:
-            self.screen.fill((0, 0, 0))
-            self.board.paddles.draw(screen)
-            self.board.balls.draw(screen)
-            self.board.walls.draw(screen)
-            pygame.display.flip()
+            self.update_screen()
 
             ###USER INPUT
             if not self.pause:
-                for event in pygame.event.get():
+                events = pygame.event.get()
+                for event in events:
                     if event.type == pygame.QUIT:
                         quit = True
                         break
                     if event.type == pygame.KEYDOWN:
                         try:
                             if event.key == pygame.K_COMMA:
-                                board.paddle[3].move(False)
+                                self.board.paddle[3].move(False)
                             elif event.key == pygame.K_PERIOD:
-                                board.paddle[3].move(True)
+                                self.board.paddle[3].move(True)
                             elif event.key == pygame.K_c:
-                                board.paddle[1].move(False)
+                                self.board.paddle[1].move(False)
                             elif event.key == pygame.K_v:
-                                board.paddle[1].move(True)
+                                self.board.paddle[1].move(True)
                             elif event.key == pygame.K_q:
-                                board.paddle[2].move(False)
+                                self.board.paddle[2].move(False)
                             elif event.key == pygame.K_a:
-                                board.paddle[2].move(True)
+                                self.board.paddle[2].move(True)
                             elif event.key == pygame.K_UP:
-                                board.paddle[0].move(False)
+                                print "up"
+                                self.board.paddle[0].move(False)
                             elif event.key == pygame.K_DOWN:
-                                board.paddle[0].move(True)
+                                print "down"
+                                self.board.paddle[0].move(True)
                             elif event.key == pygame.K_p:
-                                self.pause()
+                                self.pause_game()
+                            self.update_screen()
                         except Exception:
                             print "Invalid move."
-    
+                events = pygame.event.get()
                 for ball in self.board.ball:
                     ball.move()
                     for object in self.board.objects:
@@ -73,13 +82,8 @@ class Game(object):
                     if orientation != 0:
                         self.board.changeToLoss(orientation)
                 
-                self.screen.fill((0, 0, 0))
-                self.board.paddles.draw(screen)
-                self.board.balls.draw(screen)
-                self.board.walls.draw(screen)
-    
-                pygame.display.flip() # update screen
-            self.clock.tick(1)
+            self.update_screen() # update screen
+
             
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
@@ -100,6 +104,7 @@ while result == -1:
         num_players = int(raw_input("Number of Players (1 to 4): "))
         num_balls = int(raw_input("Number of Balls (1 to 3): "))
         ball_speed = int(raw_input("Ball Speed (1 to 10): "))
+        ball_speed /= 2
         board = Board(num_players, num_balls, ball_speed)
         clock = pygame.time.Clock()
         game = Game(screen, board, clock)
