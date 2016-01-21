@@ -17,7 +17,7 @@ class PhysObj(pygame.sprite.Sprite):
     x = obj.get_x
     y = obj.get_y
     rect = obj.get_rect
-    return self.rect.pygame.Rect.colliderect(rect)
+    return self.rect.colliderect(rect)
   
   def get_x(self):
     return self.pos_x
