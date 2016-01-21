@@ -39,7 +39,17 @@ class Ball(PhysObj):
         return self.velocity
 
     def is_collided(self):
-        #should return if it collides with a paddle, wall, or ball
+		if self.isCollis(#right paddle or left paddle):
+			ang = 180-self.angle
+		elif self.isCollis(#top or bottom paddle):
+			ang = 360-self.angle
+		if ang >= 360:
+			ang = ang-360
+		elif ang <=0:
+			ang = ang+360
+		self.set_angle(ang)
+		return self.get_angle()
+        #returns new angle of ball
         #if position of ball is equal to pos range of paddles then return true
         #loop through each paddle and add/subtract length of paddle
         pass
@@ -100,7 +110,7 @@ class Ball(PhysObj):
 		self.pos_x += (0.5 * velocity * math.cos(self.angle))
 		self.pos_y += (0.5 * velocity * math.sin(self.angle))
 		self.update_rect()
-		
+
 	def changeDir(self, obj):
 		pass
 >>>>>>> origin/master
