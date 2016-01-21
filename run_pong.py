@@ -63,10 +63,8 @@ class Game(object):
                             elif event.key == pygame.K_a:
                                 self.board.paddle[2].move(True)
                             elif event.key == pygame.K_UP:
-                                print "up"
                                 self.board.paddle[0].move(False)
                             elif event.key == pygame.K_DOWN:
-                                print "down"
                                 self.board.paddle[0].move(True)
                             elif event.key == pygame.K_p:
                                 self.pause_game()
