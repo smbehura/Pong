@@ -107,9 +107,8 @@ class Board(object):
         
 
     def checkForWin(self):
-        for person in self.player:
-            if person.state == 1:
-                return True
+        if (len(self.wall) == 3 and len(self.player) != 1) or (len(self.wall) == 4 and len(self.player) == 1):
+            return True
         return False
 
     def checkCollandDir(self):
