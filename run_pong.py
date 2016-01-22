@@ -23,6 +23,11 @@ class Game(object):
         self.pause = False
 
     def update_screen(self):
+        '''
+        this block of code is used to update the screen image for the user
+        returns None
+        '''
+        
         self.screen.fill((0, 0, 0))
         self.board.paddles.draw(screen)
         self.board.balls.draw(screen)
@@ -32,12 +37,24 @@ class Game(object):
         self.clock.tick(50)
 
     def pause_game(self):
+        '''
+        pauses the game stops movement; stops taking in user input to move the paddles
+        changes the value of self.pause to be the opposite
+        returns None
+        '''
+        
         if self.pause:
             self.pause = False
         else:
             self.pause = True
         
     def main_loop(self, num_players, num_balls, ball_speed):
+        '''
+        runs the game once user inputs have been recieved
+        num_players, num_balls, ball_speed = int
+        return None
+        '''
+        
         quit = False
         while not self.board.checkForWin() and not quit:
             self.update_screen()
@@ -105,7 +122,9 @@ class Game(object):
             time.sleep(3)
         pygame.quit()
 
-
+'''
+runs the different game menus
+'''
 result = -1
 list_result = []
 while result == -1:
