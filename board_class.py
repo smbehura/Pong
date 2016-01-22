@@ -26,9 +26,11 @@ class Board(object):
         self.paddle = [] #list of paddles in game which depends on self.numPlayers
         self.wall = [] #list of the walls that will be used for bouncing
 
+        # initializes balls in self.ball list
         for num in range(num_balls):
             self.ball.append(Ball(self.white, ball_speed, random.randint(200,300), random.randint(200,300))) #determine x, y
 
+        # initializes players in self.player list
         for num in range(num_players):
             if num == 0:
                 new_paddle = Paddle(self.red, 480, 200, num + 1, ball_speed)
@@ -45,6 +47,7 @@ class Board(object):
             new_player = Player(new_paddle, num + 1)
             self.player.append(new_player)
 
+        # initializes walls in self.wall list
         for num in range(4, num_players, -1):
             if num == 1:
                 new_wall = Wall(num, 480, 0)
@@ -56,6 +59,7 @@ class Board(object):
                 new_wall = Wall(num, 0, 0)
             self.wall.append(new_wall)
 
+        # renders all lists
         self.balls = pygame.sprite.RenderPlain()
         self.paddles = pygame.sprite.RenderPlain()
         self.walls = pygame.sprite.RenderPlain()
@@ -68,6 +72,7 @@ class Board(object):
         for obj in self.wall:
             self.walls.add(obj)
 
+        # creates list of all physical objects
         self.objects = self.ball + self.paddle + self.wall
 
     def setNumPlay(self, num):
