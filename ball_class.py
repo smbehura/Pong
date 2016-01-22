@@ -56,6 +56,7 @@ class Ball(PhysObj):
                     # bottom: 5*pi/4 --> 3*pi/4; 7*pi/4 --> pi/4
                     # top: 3*pi/4 --> 5*pi/4; pi/4 --> 7*pi/4
                     self.angle = 2 * math.pi - self.angle
+                    print 'hit even wall/paddle'
                 elif obj.orientation % 2 == 1: # odd number: left or right
                     # right: 7*pi/4 --> 5*pi/4; pi/4 --> 3*pi/4
                     # left: 5*pi/4 --> 7*pi/4; 3*pi/4 --> pi/4
@@ -63,12 +64,14 @@ class Ball(PhysObj):
                         self.angle = math.pi - self.angle
                     elif self.angle > math.pi:
                         self.angle = 3 * math.pi - self.angle
+                    print 'hit odd wall/paddle'
             elif type(obj) is Ball:
                 # pi/4 --> 3*pi/4; 3*pi/4 --> pi/4; 5*pi/4 --> 7*pi/4; 7*pi/4 --> 5*pi/4
                 if self.angle <= math.pi:
                     self.angle = math.pi - self.angle
                 elif self.angle > math.pi:
                     self.angle = 3 * math.pi - self.angle
+                print 'hit ball'
         return self.get_angle()
         #returns new angle of ball
         #if position of ball is equal to pos range of paddles then return true
