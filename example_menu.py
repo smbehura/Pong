@@ -49,7 +49,11 @@ from menu import *
 ## ---[ main ]------------------------------------------------------------------
 #  This function runs the entire screen and contains the main while loop
 #
+
 def main(screen):
+   '''
+   main menu when game is opened
+   '''
 
    # Create 3 diffrent menus.  One of them is only text, another one is only
    # images, and a third is -gasp- a mix of images and text buttons!  To
@@ -129,6 +133,9 @@ def main(screen):
       pygame.display.update(rect_list)
 
 def alt_main(screen):
+   '''
+   instructions menu when instruction button is clicked
+   '''
 
    # Create 3 diffrent menus.  One of them is only text, another one is only
    # images, and a third is -gasp- a mix of images and text buttons!  To
@@ -245,6 +252,10 @@ def alt_main(screen):
       pygame.display.update(rect_list)
 
 def nalt_main(screen):
+   '''
+   options screen where user inputs game values
+   '''
+   
    input_list = [1, 1, 5]
 
    # Create 3 diffrent menus.  One of them is only text, another one is only
