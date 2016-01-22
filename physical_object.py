@@ -16,9 +16,11 @@ class PhysObj(pygame.sprite.Sprite):
   def isCollis(self, obj):
     x = obj.get_x
     y = obj.get_y
-    rect = obj.image.get_rect()
-    rect2 = self.image.get_rect()
-    print rect2.colliderect(rect)
+    rect = obj.get_rect()
+    rect2 = self.get_rect()
+    # print rect2.colliderect(rect)
+    # print rect, rect2
+    # return False
     return rect2.colliderect(rect)
   
   def get_x(self):
