@@ -6,6 +6,7 @@ import pygame
 from example_menu import main as menu
 from example_menu import alt_main as instructions
 from example_menu import nalt_main as options
+import time
 
 from board_class import Board
 
@@ -75,7 +76,8 @@ class Game(object):
                 for ball in self.board.ball:
                     ball.move()
                     for object in self.board.objects:
-                        ball.changeDir(object)
+                        if ball != object:
+                            ball.changeDir(object)
                     
                     orientation = ball.offScreenOrientation()
                     if orientation != 0:
@@ -91,7 +93,18 @@ class Game(object):
                 elif event.type == pygame.QUIT:
                     quit = True
                     break
+        if self.board.checkForWin():
+            self.screen.fill((0, 0, 0))
+            myfont = pygame.font.SysFont("monospace", 40)
+            if self.board.notSinglePlayer():
+                text = myfont.render("You Won!", 1, (255,255,255))
+            else:
+                text = myfont.render("Nice Try!", 1, (255,255,255))
+            self.screen.blit(text, (160,220))
+            pygame.display.flip()
+            time.sleep(3)
         pygame.quit()
+
 
 result = -1
 list_result = []
