@@ -18,6 +18,7 @@ class PhysObj(pygame.sprite.Sprite):
     y = obj.get_y
     rect = obj.image.get_rect()
     rect2 = self.image.get_rect()
+    print rect2.colliderect(rect)
     return rect2.colliderect(rect)
   
   def get_x(self):
