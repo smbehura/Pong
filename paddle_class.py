@@ -22,6 +22,7 @@ class Paddle(PhysObj):
 
     # Function determines which image to load for the paddle depending on which player number they are
     # Takes in a number and sets the image of the paddle accordingly
+    # Returns None
     def determine_image(self, num):
         if num == 1:
             self.image = pygame.image.load("paddle_R.png").convert_alpha()
@@ -56,15 +57,8 @@ class Paddle(PhysObj):
                 self.pos_y -= self.ball_speed + 5 # moves paddle up
                 self.update_rect()
 
-    def isPaddleofPlayer(self, player):
-        # this function will probably need to moved to the player class
-        pass
-
-    def draw(self):
-        # draw paddle using location and stuff
-        pass
-
     # Update the position of the paddle
+    # Returns None
     def update_rect(self):
         self.rect.x = self.pos_x
         self.rect.y = self.pos_y
