@@ -71,9 +71,21 @@ class Board(object):
         self.objects = self.ball + self.paddle + self.wall
 
     def setNumPlay(self, num):
+        '''
+        sets the value of self.num_players to the num parameter
+        num = int
+        returns None
+        '''
+        
         self.num_players = num
 
     def changeToLoss(self, player_num):
+        '''
+        changes the player's state to -1 (lost) and updates the paddle and wall lists to match
+        player_num = int
+        return None
+        '''
+        
         player = None
         for person in self.player:
             if player_num == person.orient:
@@ -107,21 +119,33 @@ class Board(object):
         
 
     def checkForWin(self):
+        '''
+        checks if a player has won the game
+        returns True if someone has won; else False
+        '''
+        
         if (len(self.wall) == 3 and len(self.player) != 1) or (len(self.wall) == 4 and len(self.player) == 1):
             return True
         return False
 
     def notSinglePlayer(self):
+        '''
+        checks if the game was not a single player game
+        returns True if multiplayer; else false
+        '''
+        
         if len(self.player) == 1:
             return False
         return True
 
     def checkCollandDir(self):
+        '''
+        checks if two objects are colliding and changes the directions of the objects if they are
+        returns None
+        '''
+        
         for obj in self.objects:
             for obj2 in self.objects:
                 if obj.isCollis(obj2):
                     if type(obj) == Ball:
                         obj.changeDir()
-
-    def idk(self):
-        pass
