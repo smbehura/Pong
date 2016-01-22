@@ -24,40 +24,52 @@ class Ball(PhysObj): # Ball inherits from the Physical Object class
         pass
 
     # Set the velocity of the ball
+    # input: integer value representing velocity
+    # output: none but self.velocity is updated to new value
     def set_vel(self, velocity):
         self.velocity = velocity
 
     # Set the angle that the ball will bounce
+    # input: integer value in radians representing angle
+    # output: none but self.angle is updated to new input value
     def set_angle(self,angle):
         self.angle = angle
     
     # Set the color to the color chosen
+    # input: color
+    # output: none but self.color is updated to new input color
     def set_color(self, color):
         self.color = color
 
-    # Return the angle
+    # Returns angle
+    # input: none
+    # output: integer value representing current angle
     def get_angle(self):
         return self.angle
 
-    # Return the color
+    # Returns color
+    # input: none
+    # output: color representing current color of Ball
     def get_color(self):
         return self.color
 
-    # Return the velocity
+    # Returns velocity
+    # input: none
+    # output: integer value representing current velocity of Ball
     def get_velocity(self):
         return self.velocity
 
-    def changeColor(self):
-        #changes color based on paddle hit
-        pass
-
-    # Change the x and y coordinates of the ball position and update teh location
+    # Changes x and y coordinates of the ball position and updates the location
+    # input: none
+    # output: none but x and y positions of Ball and rectangle of ball are updated
     def move(self):
         self.pos_x += (1 * self.velocity * math.cos(self.angle))
         self.pos_y += (1 * self.velocity * math.sin(self.angle))
         self.update_rect()
 
-    # Collision function
+    # Collision function that changes direction of Ball when it collides with another physical object
+    # input: physical object
+    # output: none but changes self.angle depending on what type of physical object and orientation of object it hits
     def changeDir(self, obj):
         if self.isCollis(obj):
             # Collision function for if ball hits a paddle or a wall
@@ -85,13 +97,17 @@ class Ball(PhysObj): # Ball inherits from the Physical Object class
         #if position of ball is equal to pos range of paddles then return true
         #loop through each paddle and add/subtract length of paddle
         
-        # checks if ball is off screen (used later in function below)
+    # checks if ball is off screen (used later in function below)
+    # input: none
+    # output: boolean based on whether or not ball is on screen or off screen
     def isOffScreen(self):
         if 0 < self.pos_x and self.pos_x > 500 and 0 < self.pos_y and self.pos_y > 500:
             return False
         return True
         
     # returns orientation of player who lost ball and 0 if ball is still on board
+    # input: none
+    # output: returns integer representing orientation of wall that ball is off screen on (so losing player can be identified)
     def offScreenOrientation(self):
         if self.isOffScreen():
             if self.pos_x > 500 and self.pos_y < 500:
