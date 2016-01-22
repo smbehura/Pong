@@ -31,16 +31,16 @@ class Board(object):
 
         for num in range(num_players):
             if num == 0:
-                new_paddle = Paddle(self.red, 480, 200, num + 1)
+                new_paddle = Paddle(self.red, 480, 200, num + 1, ball_speed)
                 self.paddle.append(new_paddle)
             elif num == 1:
-                new_paddle = Paddle(self.blue, 200, 480, num + 1)
+                new_paddle = Paddle(self.blue, 200, 480, num + 1, ball_speed)
                 self.paddle.append(new_paddle)
             elif num == 2:
-                new_paddle = Paddle(self.yellow, 5, 200, num + 1)
+                new_paddle = Paddle(self.yellow, 5, 200, num + 1, ball_speed)
                 self.paddle.append(new_paddle)
             elif num == 3:
-                new_paddle = Paddle(self.green, 200, 5, num + 1)
+                new_paddle = Paddle(self.green, 200, 5, num + 1, ball_speed)
                 self.paddle.append(new_paddle)
             new_player = Player(new_paddle, num + 1)
             self.player.append(new_player)
@@ -110,6 +110,11 @@ class Board(object):
         if (len(self.wall) == 3 and len(self.player) != 1) or (len(self.wall) == 4 and len(self.player) == 1):
             return True
         return False
+
+    def notSinglePlayer(self):
+        if len(self.player) == 1:
+            return False
+        return True
 
     def checkCollandDir(self):
         for obj in self.objects:
