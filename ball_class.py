@@ -9,12 +9,13 @@ import pygame, random, math
 from wall_class import Wall
 
 
-class Ball(PhysObj):
+class Ball(PhysObj): # Ball inherits from the Physical Object class
     def __init__(self, color, vel, x, y):
         super(Ball, self).__init__(x, y)
         self.image = pygame.image.load("ball.jpg").convert_alpha()
         self.rect = self.image.get_rect()
-        self.color = color
+        # Set the attributes for the Ball object
+        self.color = color 
         self.velocity = vel
         self.pos_x = x
         self.pos_y = y
@@ -22,21 +23,27 @@ class Ball(PhysObj):
         self.update_rect()
         pass
 
+    # Set the velocity of the ball
     def set_vel(self, velocity):
         self.velocity = velocity
 
+    # Set the angle that the ball will bounce
     def set_angle(self,angle):
         self.angle = angle
-
+    
+    # Set the color to the color chosen
     def set_color(self, color):
         self.color = color
 
+    # Return the angle
     def get_angle(self):
         return self.angle
 
+    # Return the color
     def get_color(self):
         return self.color
 
+    # Return the velocity
     def get_velocity(self):
         return self.velocity
 
@@ -44,13 +51,16 @@ class Ball(PhysObj):
         #changes color based on paddle hit
         pass
 
+    # Change the x and y coordinates of the ball position and update teh location
     def move(self):
         self.pos_x += (1 * self.velocity * math.cos(self.angle))
         self.pos_y += (1 * self.velocity * math.sin(self.angle))
         self.update_rect()
 
+    # Collision function
     def changeDir(self, obj):
         if self.isCollis(obj):
+            # Collision function for if ball hits a paddle or a wall
             if type(obj) is Paddle or type(obj) is Wall:
                 if obj.orientation % 2 == 0: # even number: top or bottom
                     # bottom: 5*pi/4 --> 3*pi/4; 7*pi/4 --> pi/4
@@ -62,7 +72,8 @@ class Ball(PhysObj):
                     if self.angle <= math.pi:
                         self.angle = math.pi - self.angle
                     elif self.angle > math.pi:
-                        self.angle = 3 * math.pi - self.angl
+                        self.angle = 3 * math.pi - self.angle
+            # Collision function for if ball hits another ball
             elif type(obj) is Ball:
                 # pi/4 --> 3*pi/4; 3*pi/4 --> pi/4; 5*pi/4 --> 7*pi/4; 7*pi/4 --> 5*pi/4
                 if self.angle <= math.pi:
