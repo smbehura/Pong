@@ -45,8 +45,8 @@ class Ball(PhysObj):
         pass
 
     def move(self):
-        self.pos_x += (0.5 * self.velocity * math.cos(self.angle))
-        self.pos_y += (0.5 * self.velocity * math.sin(self.angle))
+        self.pos_x += (1 * self.velocity * math.cos(self.angle))
+        self.pos_y += (1 * self.velocity * math.sin(self.angle))
         self.update_rect()
 
     def changeDir(self, obj):
